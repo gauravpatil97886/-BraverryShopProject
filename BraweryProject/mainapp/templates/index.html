@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brewery List </title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+     <style>
+      .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+    }
+
+    /* Logo styles */
+    /* Logo Animation */
+.logo {
+  font-size: 24px;
+  /* Adding a subtle animation */
+  transition: color 0.3s ease-in-out;
+}
+
+.logo:hover {
+  color: #ff6347; /* Change the color on hover */
+}
+
+/* Logout Button Animation */
+.logout-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3498db;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #2980b9; /* Darker background color on hover */
+  animation: highlight 0.5s ease; /* Adding a highlight animation */
+}
+
+/* Keyframes for the highlight animation */
+@keyframes highlight {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #2980b9; /* Adding a shadow during animation */
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+       body {
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+     
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        #heading {
+            text-align: center;
+        }
+
+        #getList {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #span-filter,
+        #span-search {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select {
+            width: 200px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button[type="submit"] {
+            padding: 8px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+/* Footer styles */
+.card {
+    margin: 3rem;
+    padding: 0.8rem;
+    width: 110rem;
+
+    background-color: #85FFBD;
+  background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%); border-radius: 20px; 
+    transition: all 0.8s cubic-bezier(0.15, 0.83, 0.66, 1);
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 21px rgba(0, 0, 0, 0.3), 0px 39px 39px rgba(0, 0, 0, 0.25), 0px 87px 52px rgba(0, 0, 0, 0.2), 0px 155px 62px rgba(0, 0, 0, 0.15);
+}
+
+
+  .body{
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 95%;
+    height: auto;
+    /* align-items: center;
+    justify-items: center;  */
+    background-image: linear-gradient(to top,  rgb(238, 249, 255),rgb(255 251 235));
+    margin-bottom: 5rem;
+}
+
+/* Example styles for the 'Add Review' button */
+
+.add-review-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3498db;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-review-btn:hover {
+  background-color: #2980b9;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  margin-left: 5px;
+  font-weight: bold;
+  color: #e8e8e8; /* Adjust text color as needed */
+}
+.result h4 {
+  opacity: 0;
+  color: #3498db; /* Set the text color to a shade of blue (you can change it) */
+  animation: fadeIn 1s ease-out forwards infinite;
+  font-size: x-large;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.pagination-circle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pagination-circle .page-link {
+            border-radius: 50%;
+        }
+
+        .copyright {
+            font-size: 1.2rem;
+            color: #888;
+            animation: rotateColor 5s infinite linear;
+        }
+
+        @keyframes rotateColor {
+            0% {
+                color: #888;
+            }
+            50% {
+                color: #555;
+            }
+            100% {
+                color: #888;
+            }
+        }
+
+
+  
+     </style>
+
+</head>
+
+<body>
+
+    <div class="navbar">
+        <!-- Logo with bear shop name -->
+        <div class="logo">
+          🐻 Braverry Shop
+        </div>
+      
+        <!-- Show username if logged in -->
+        {% if request.user.is_authenticated %}
+        <h3>
+          <div class="user-info">
+            Welcome, <span class="username">{{ request.user.username|title }}</span>
+          </div>
+          </h3>
+        {% endif %}
+      
+        <!-- Logout button -->
+        <h4><a href="{% url 'logout' %}" class="logout-btn">Logout</a></h4>
+      </div>
+      
+
+
+
+
+    <div class="modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Error </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p id="modal-msg">Error </p>
+            </div>
+            <div class="modal-footer">
+              <button class = "modal-button" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="full-body">
+    <!-- header div -->
+    <div class="header">
+        <div id="heading">
+            <h1>Brewery List</h1>
+            <button type="submit" id="getList" onclick="breweryAPI()" class="btn btn-primary">Click to get all breweries!</button>
+        </div>
+
+        <div class="form mt-4">
+            <form action="" id="search-form" class="row g-3">
+
+                <div class="col-md-4">
+                    <label for="filter" class="form-label">Find by</label>
+                    <select name="filter-value" id="filterby" class="form-select">
+                        <option value="name">Brewery Name</option>
+                        <option value="type">Brewery Type</option>
+                        <option value="city">City</option>
+                        <option value="state">State</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="search" class="form-label">Search</label>
+                    <div class="input-group">
+                        <input type="text" id="search-term" class="form-control" placeholder="Find breweries" minlength="2" value="" required>
+                        <button type="submit" class="btn btn-outline-secondary">Find</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+          <!-- bodyheader div -->
+          <div class="body-header">
+    <div class="result-filter">
+        <div class="form mt-3">
+            <form action="" id="filter-form" class="row g-3">
+
+                <div class="col-md-3">
+                    <label for="drop-type" class="form-label"><b>Tip: Available Types</b></label>
+                    <select name="" id="drop-type" class="form-select">
+                        <option value="" selected disabled>Tip: Available Types</option>
+                        <option value="" disabled>micro</option>
+                        <option value="" disabled>nano</option>
+                        <option value="" disabled>regional</option>
+                        <option value="" disabled>brewpub</option>
+                        <option value="" disabled>large</option>
+                        <option value="" disabled>planning</option>
+                        <option value="" disabled>bar</option>
+                        <option value="" disabled>contract</option>
+                        <option value="" disabled>proprietor</option>
+                        <option value="" disabled>closed</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="resultFilter" class="form-label">Filter</label>
+                    <select name="filter-result" id="resultFilter" class="form-select">
+                        <option value="name">Brewery Name</option>
+                        <option value="brewery_type">Brewery Type</option>
+                        <option value="city">City</option>
+                        <option value="state">State</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="result-term" class="form-label">Search</label>
+                    <div class="input-group">
+                        <input type="text" id="result-term" class="form-control" placeholder="Enter criteria" minlength="1" value="" required>
+                        <button type="submit" class="btn btn-outline-secondary">Filter Result</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="result"></div>
+</div>
+
+          <!-- body div -->
+          
+<div class="body" id="card-parent">
+    <!-- Your content goes here -->
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <p id="showing"></p>
+            </div>
+            <div class="col-md-3">
+                <button onclick="resetList(this)" id="resetbutton" class="btn btn-secondary">Clear filter</button>
+            </div>
+            <div class="col-md-3">
+                <nav aria-label="pagination-size" class="pagination justify-content-center" id="page-btn">
+                    <!-- Add your pagination links/buttons here -->
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    </ul>
+                </nav>
+            </div>
+           
+        </div>
+    </div>
+</footer>
+
+
+
+<div class="col-md-3 text-center">
+    <p>&copy; 2023 Gaurav. All rights reserved.</p>
+</div>
+
+
+
+
+    <script>
+
+// api-url to get all breweries , max is 200
+var apiURL = "https://api.openbrewerydb.org/breweries?per_page=200"
+//var apiURL = "https://api.openbrewerydb.org/breweries?by_city=san_diego&per_page=100"
+
+   //Variables for pagination
+       var array = [];
+       var len =  0;
+        var tableSize = 12;
+        var startRow = 1;
+        var endRow = 0;
+        var currPage = 1;
+        var maxPage = 0;
+        var list = [];
+        var resList = [];
+        var array_list = [];
+
+//MODAL DIALOG BOX
+var cncel_btn = document.querySelector('.modal-button');
+cncel_btn.addEventListener('click',()=>{
+    var modal = document.querySelector('.modal');
+    modal.style.display = 'none';
+});
+
+
+async function fetchBreweryList(api){
+    var getApiResp = await fetch(api);
+    var getPromise = await getApiResp.json();
+    return getPromise;
+}
+
+function createCard(i) {
+    var cardWrap = document.createElement('div');
+    cardWrap.classList.add('card');
+    cardWrap.style.width = "18rem";
+
+    var hd1 = document.createElement('h5');
+    hd1.classList.add('card-title');
+    var titleLink = document.createElement('a');
+    titleLink.style.color = '#007bff';
+    titleLink.innerText = i.name;
+    hd1.appendChild(titleLink);
+
+
+    var hd2 = document.createElement('h6');
+    hd2.innerText = "Type: " + i.brewery_type;
+
+    var cardAddr = document.createElement('div');
+    cardAddr.classList.add('card-addr');
+
+    function getStarRating(rating) {
+        const maxRating = 5;
+        const roundedRating = Math.round(parseFloat(rating));
+        const fullStars = '★'.repeat(roundedRating);
+        const emptyStars = '☆'.repeat(maxRating - roundedRating);
+        return `${fullStars}${emptyStars}`;
+    }
+
+    var addrP = document.createElement('p');
+addrP.innerHTML = `
+    <span style="font-weight: bold; font-size: 1.2em;">🏠 Brewery Address:</span> ${i.street}, ${i.city}, ${i.state}<br>
+    <span style="font-weight: bold; font-size: 1.2em;">☎️ Phone number:</span> ${i.phone}<br>
+    <span style="font-weight: bold; font-size: 1.2em;">🌐 <a href="${i.website_url}" target="_blank" style="text-decoration: none; color: #007bff;">Website</a></span><br>
+    <span style="font-weight: bold; font-size: 1.2em;">⭐️ Current rating:</span> ${getStarRating(i.rating)} (${i.rating})<br>
+    <span style="font-weight: bold; font-size: 1.2em;">🌍 State, City:</span> ${i.state}, ${i.city}
+`;
+
+// Add some additional styling to the entire paragraph
+addrP.style.padding = '10px';
+addrP.style.border = '1px solid #ddd';
+addrP.style.borderRadius = '5px';
+
+    var addReviewButton = document.createElement('a');
+   addReviewButton.href = 'http://127.0.0.1:8000/brewery/' + i.id;
+    addReviewButton.innerText = 'Add Review';
+    addReviewButton.classList.add('add-review-btn');
+
+    // Append button to the address div
+    cardAddr.appendChild(addrP);
+    cardAddr.appendChild(addReviewButton);
+
+    cardWrap.appendChild(hd1);
+    cardWrap.appendChild(hd2);
+    cardWrap.appendChild(cardAddr);
+
+    var parent = document.querySelector('#card-parent');
+    parent.appendChild(cardWrap);
+
+    // Add an event listener to the button if needed
+    addReviewButton.addEventListener('click', function() {
+        // Handle the click event, for example, open a review modal or redirect to a review page
+        // You can add your logic here
+        console.log('Add review clicked for:', i.name);
+    });
+}
+
+
+//Fetch all breweries (max is 200)
+// Call this function before fetching the brewery list
+function beforeFetch() {
+        var parent = document.querySelector('#card-parent');
+        parent.innerHTML = '';
+        var search = document.querySelector('#search-term');
+        search.value = '';
+        var res = document.querySelector('#result-term');
+        res.value = '';
+        showLoadingSpinner();
+    }
+
+    async function breweryAPI() {
+        try {
+            beforeFetch();
+            list = await fetchBreweryList(apiURL);
+            array_list = list;
+            var result = document.querySelector('.result');
+            result.innerHTML = `<h4>${list.length} breweries found</h4>`;
+            // Creating pagination
+            paginationButtons();
+        } catch (err) {
+            console.log(err);
+            var modal = document.querySelector('.modal');
+            var modalmsg = document.querySelector('#modal-msg');
+            modalmsg.innerHTML = 'Error fetching brewery list <br>' + err;
+            modal.style.display = 'block';
+        }
+    }
+
+
+
+
+//CARD STRUCTURE
+    // <div class="card"  style="width: 18rem;">
+    //               <h5 class="card-title">10 Barrel Brewing Co</h5>
+    //               <h6>Type: large</h6>
+    //             <div class= "card-addr">
+    //               <p class="card-text">1501 E St, San Diego, California, 92101-6618</p>
+    //               <a href="http://10barrel.com" class="btn btn-primary">http://10barrel.com</a>
+    //             </div>
+    //  </div>
+
+    function showLoadingSpinner() {
+        var result = document.querySelector('.result');
+        result.innerHTML = `<div class="loading-spinner"></div><p>Loading...</p>`;
+    }
+// find Brewery filter fetch data
+    async function findbreweryAPI(apiBy,fil_value,search_term) {
+
+        try {
+            list = await fetchBreweryList(apiBy);
+            var parent = document.querySelector('#card-parent')
+            parent.innerHTML = "";
+            var res = document.querySelector('#result-term')
+            res.value = "";
+            var result = document.querySelector('.result')
+            result.innerHTML = `<h4> ${list.length} results found </h4>`
+            array_list = list;
+            paginationButtons();
+
+        }
+        catch(err){
+            console.log(err);
+            var modal = document.querySelector('.modal')
+            var modalmsg = document.querySelector('#modal-msg')
+            modalmsg.innerHTML = `Error fetching brewery list for this ${fil_value} and ${search_term} <br> ${err}`;
+            modal.style.display = 'block';
+        }
+
+    }
+
+    // create API-url from filter choices
+    var form = document.querySelector('.header form')
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault();
+
+            var filterby = document.querySelector('#filterby')
+            var fil_value = filterby.value;
+            //console.log(fil_value); // name type city state
+
+            var search = document.querySelector('#search-term')
+            var search_term = search.value;
+            search_term = search_term.trim();
+            search_term = search_term.toLowerCase();
+            //console.log(search_term);
+            var apiBy;
+            if( fil_value == "name")  {
+                 apiBy = `https://api.openbrewerydb.org/breweries?by_name=${search_term}&per_page=100`
+            }
+            else if( fil_value == "type")  {
+                 apiBy = `https://api.openbrewerydb.org/breweries?by_type=${search_term}&per_page=100`
+            }
+            else if( fil_value == "city")  {
+                search_term = search_term.split(" ").join("_")
+                 apiBy = `https://api.openbrewerydb.org/breweries?by_city=${search_term}&per_page=100`
+            }
+            else if( fil_value == "state")  {
+                search_term = search_term.split(" ").join("_")
+                 apiBy = `https://api.openbrewerydb.org/breweries?by_state=${search_term}&per_page=100`
+            }
+
+         findbreweryAPI(apiBy,fil_value,search_term);
+    })
+
+    // determines total pages required
+    function paginationButtons(){
+        array = array_list;
+        len =  array.length;
+        startRow = 1;
+        endRow = tableSize;
+        currPage = 1;
+        maxPage = Math.ceil(len/tableSize);
+      //console.log("in pagination",maxPage,startRow,endRow,len);
+        createButtons();
+    }
+
+    //creates button for all the pages
+    function createButtons() {
+        var page_btn = document.querySelector("#page-btn");
+        page_btn.innerHTML = "";
+
+        for(i=1; i<=maxPage; i++){
+          //  console.log("in create",i);
+            var btn = document.createElement('button')
+            btn.setAttribute('id', `btn-${i}`)
+            btn.setAttribute('onclick', "pageEvent(this)")
+            btn.innerText = i;
+            page_btn.append(btn);
+        }
+        currentPage();
+
+    }
+
+   // gets and displays the current page
+    function currentPage(){
+        var tableSize = 12
+        startRow = ((Number(currPage))-1) * Number(tableSize) + 1;
+        endRow = (startRow + Number(tableSize)) - 1;
+       // console.log(currPage,tableSize,startRow,endRow);
+        if(endRow > len)
+           endRow = len;
+
+         displayCard();
+        var page_show = document.querySelector("#showing");
+        if( len != 0)
+        page_show.innerHTML = `${startRow} to ${endRow} of ${len} results`
+        else
+        page_show.innerHTML = ` ${len} results`;
+        var selectPage = "#btn-"+currPage
+        //console.log(selectPage)
+        var selectedPage = document.querySelector(selectPage)
+        //console.log(selectedPage)
+        if(selectedPage != null)
+        selectedPage.classList.add("active");
+
+    }
+
+    // called everytime user clicks on a page button
+    function pageEvent(e){
+        currPage = Number(e.innerText);
+        tableSize = 12;
+        //console.log("button clicked");
+        var prevSel = document.querySelector("#page-btn button[class='active']")
+       // console.log(prevSel);
+       if(prevSel != null)
+        prevSel.classList.remove("active");
+        currentPage();
+    }
+
+
+   // determines the data to be displayed for selected page
+    function displayCard(){
+        try{
+        //console.log("calling card", currPage);
+        var parent = document.querySelector('#card-parent')
+        parent.innerHTML = "";
+        var start = startRow - 1;
+        var end = endRow;
+        for(let j=start; j<end; j++){
+           // console.log("calling card", currPage, j, list[j]);
+            createCard(array_list[j]);
+        }
+        }
+        catch(err){
+            console.log("error writing card");
+        }
+
+    }
+
+    //form to filter the displayed results
+    var resform = document.querySelector('#filter-form');
+    resform.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        populateResult();
+
+    })
+
+    // after implementing filter on current results, display the new result
+    function populateResult(){
+        var parent = document.querySelector('#card-parent')
+        parent.innerHTML = "";
+        var filterby = document.querySelector('#resultFilter')
+            var fil_value = filterby.value;
+            //console.log(fil_value); // name type city state
+            var search = document.querySelector('#result-term')
+            var search_term = search.value;
+            search_term.trim();
+            search_term = search_term.split(" ").join(" ")
+            search_term = search_term.toLowerCase();
+            try{
+               resList = [];
+                for( k of array_list){
+                    if(k[fil_value] != null) {
+                        let data = k[fil_value].toLowerCase();
+                      //  console.log(data.includes(search_term), search_term,data)
+                        if( data.includes(search_term)){
+                            resList.push(k);
+                        }
+                    }
+                    else{
+
+                    }
+                }
+                try {
+                  var result = document.querySelector('.result')
+                  result.innerHTML = `<h4> ${resList.length} results found </h4>`
+                  array_list = resList ;
+                 // console.log(list.length,resList.length)
+                 //console.log("calling pagination from filter",startRow,endRow);
+                  paginationButtons();
+
+              }
+              catch(err){
+                  console.log(err);
+                  var modal = document.querySelector('.modal')
+                  var modalmsg = document.querySelector('#modal-msg')
+                  modalmsg.innerHTML = `Error filtering result for this ${fil_value} and ${search_term} <br> ${err}`;
+                  modal.style.display = 'block';
+              }
+
+            }
+            catch(err){
+                console.log(err);
+                var modal = document.querySelector('.modal')
+                var modalmsg = document.querySelector('#modal-msg')
+                modalmsg.innerHTML = `Error filtering result ${fil_value} and ${search_term} <br> ${err}`;
+                modal.style.display = 'block';
+            }
+
+
+
+    }
+    function resetList(e){
+        array_list = list;
+        var search = document.querySelector('#result-term')
+            search.value = "";
+        var result = document.querySelector('.result')
+        result.innerHTML = `<h4> ${array_list.length} results found </h4>`
+        paginationButtons();
+    }
+    
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,460 @@
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    /* Add your custom styles here */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #85FFBD;
+  background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        font-size: 19px;
+
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .rating-container {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .rating-container i {
+        cursor: pointer;
+        color: #ccc;
+        transition: color 0.3s;
+    }
+
+    .rating-container i.fa-star {
+        color: #ffcc00;
+    }
+
+    #comment-input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    #submit-btn {
+padding: 12px ;
+border: none;
+border-radius: 6px;
+background-color: #af4cac;
+color: white;
+font-size: 10px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#submit-btn:hover {
+background-color: #dd9d13;
+}
+
+#submit-btn:active {
+transform: translateY(1px);
+box-shadow: none;
+}
+
+
+    .comment-card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .comment-card p {
+        margin: 5px 0;
+    }
+    .card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 300px;
+        max-width: 100%;
+    }
+
+    .card-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .data-point {
+        margin-bottom: 15px;
+    }
+
+    .data-point label {
+        font-weight: bold;
+    }
+
+    .data-point p {
+        margin: 5px 0;
+        line-height: 1.5;
+    }
+
+    .card-action {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+        margin-top: 15px;
+    }
+
+    .card-action button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .card-action button:hover {
+        background-color: #0056b3;
+    }
+  
+
+h1 {
+font-size: 24px;
+margin-bottom: 10px;
+}
+
+.rating-container {
+margin-bottom: 20px;
+font-size: 24px;
+color: #FFD700; /* Change the color for stars */
+}
+
+.rating-container i {
+cursor: pointer;
+transition: color 0.3s ease;
+}
+
+.rating-container i:hover,
+.rating-container i.active {
+color: #FFD700; /* Change the color for active stars */
+}
+
+
+.comment-input-container {
+display: flex;
+margin-bottom: 20px;
+}
+
+#comment-input {
+flex: 1;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 6px;
+resize: none;
+margin-right: 10px;
+}
+
+#submit-btn {
+padding: 8px 16px 8px;
+border: none;
+border-radius: 6px;
+background-color: #4CAF50;
+color: white;
+font-size: 16px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+/* Styling for existing comments list */
+#comments-list {
+margin-top: 20px;
+}
+
+/* Styling for each comment card */
+.comment-card {
+margin-bottom: 20px;
+padding: 15px;
+border: 1px solid #ccc;
+border-radius: 8px;
+background-color: #fff;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment-card p {
+margin: 5px 0;
+}
+
+.comment-card p:first-child {
+font-weight: bold;
+color: #333;
+}
+
+.comment-card p:nth-child(2) {
+color: #888;
+font-size: 12px;
+}
+
+.comment-card p:nth-child(3) {
+font-size: 16px;
+color: #ffac33; /* Change the color for rating */
+}
+
+.comment-card p:last-child {
+margin-top: 10px;
+font-style: italic;
+}
+.container1{
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+background-color: #f0f0f0;
+}
+
+.details-container {
+max-width: 700px;
+padding: 20px;
+border-radius: 10px;
+background-color: #fff;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+text-align: left;
+animation: fadeInUp 0.5s ease forwards;
+opacity: 0;
+}
+
+@keyframes fadeInUp {
+from {
+    opacity: 0;
+    transform: translateY(20px);
+}
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+.details-container p {
+margin: 10px 0;
+font-size: 19px;
+line-height: 1.6;
+color: #333;
+}
+
+.label {
+font-weight: bold;
+margin-right: 8px;
+color: #555;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+/* Logo styles */
+/* Logo Animation */
+.logo {
+font-size: 24px;
+/* Adding a subtle animation */
+transition: color 0.3s ease-in-out;
+}
+
+.logo:hover {
+color: #ff6347; /* Change the color on hover */
+}
+
+/* Logout Button Animation */
+.logout-btn {
+padding: 8px 16px;
+border: none;
+border-radius: 5px;
+background-color: #3498db;
+color: #ffffff;
+text-decoration: none;
+transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+background-color: #2980b9; /* Darker background color on hover */
+animation: highlight 0.5s ease; /* Adding a highlight animation */
+}
+
+/* Keyframes for the highlight animation */
+@keyframes highlight {
+0% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.1);
+box-shadow: 0 0 10px #2980b9; /* Adding a shadow during animation */
+}
+100% {
+transform: scale(1);
+}
+}
+.username {
+        display: inline-block;
+        animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(-50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+</style>
+
+<div class="navbar">
+    <!-- Logo with bear shop name -->
+    <div class="logo">
+        🐻 Braverry Shop
+    </div>
+
+    <!-- Show username if logged in -->
+    {% if request.user.is_authenticated %}
+    <h3>
+        <div class="user-info">
+            Welcome, <span class="username">{{ request.user.username|title }}</span>
+        </div>
+    </h3>
+    {% endif %}
+
+    <!-- Logout button -->
+    <h4><a href="{% url 'logout' %}" class="logout-btn">Logout</a></h4>
+</div>
+
+<div class="container">
+<div class="details-container">
+    <p><span class="label">Name:</span> {{data.name}} 🏷️</p>
+    <p><span class="label">Address:</span> {{data.address_1}} 🏠</p>
+    <p><span class="label">City:</span> {{data.city}} 🌆</p>
+    <p><span class="label">State/Province:</span> {{data.state_province}} 🌐</p>
+    <p><span class="label">Brewery Type:</span> {{data.brewery_type}} 🍺</p>
+    <p><span class="label">Postal Code:</span> {{data.postal_code}} 📮</p>
+    <p><span class="label">Website URL:</span> {{data.website_url}} 🌐</p>
+</div>
+</div>
+
+
+
+<div class="container">
+    <h1>Add Comment 📝</h1>
+    <div class="rating-container" id="rating-container">
+        <!-- Star icons will be dynamically added here using JavaScript -->
+    </div>
+    {% csrf_token %}
+    <div class="comment-input-container">
+        <textarea id="comment-input" placeholder="Enter your comment"></textarea>
+        <button id="submit-btn" onclick="submitRatingAndComment()">Submit</button>
+    </div>
+    <div id="comments-list">
+        {% for r in rate %}
+            <div class="comment-card">
+                <p>👤  {{ r.user }} ⭐{{ r.rating }}  </p>
+                <p>🕒 Datetime: {{ r.created_at }} </p>
+                <p>⭐ Rating: {{ r.rating }} </p>
+                <p>💬 Comment: {{ r.comment }} </p>
+            </div>
+        {% endfor %}
+    </div>
+    
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    initializeStarRating();
+
+    // Load existing comments
+    loadComments();
+});
+
+function initializeStarRating() {
+    const ratingContainer = document.getElementById('rating-container');
+
+    for (let i = 1; i <= 5; i++) {
+        const star = document.createElement('i');
+        star.classList.add('fa', 'fa-star-o');
+        star.setAttribute('data-rating', i);
+        star.addEventListener('click', handleStarClick);
+        ratingContainer.appendChild(star);
+    }
+}
+
+function handleStarClick(event) {
+    const clickedRating = parseInt(event.target.getAttribute('data-rating'));
+    localStorage.setItem("rati",clickedRating);
+    highlightStars(clickedRating);
+}
+
+
+function highlightStars(rating) {
+    const stars = document.querySelectorAll('.fa-star-o');
+
+    stars.forEach(star => {
+        const starRating = parseInt(star.getAttribute('data-rating'));
+        star.classList.toggle('fa-star-o', starRating > rating);
+        star.classList.toggle('fa-star', starRating <= rating);
+    });
+}
+
+function submitRatingAndComment() {
+    const rating = localStorage.getItem("rati");
+    const comment = document.getElementById('comment-input').value;
+
+    // You can send the rating and comment to the Django backend using AJAX or fetch API
+    // Here, we'll simply log them to the console
+    console.log('Rating:', rating);
+    console.log('Comment:', comment);
+
+    var csrfToken = $('[name=csrfmiddlewaretoken]').val();
+
+    // Clear the input fields
+    document.getElementById('comment-input').value = '';
+    var dic={
+        'data_id':'{{data.id}}',
+        'rating':rating,
+        'comment':comment,
+    };
+
+    fetch('{% url "rating" %}',{
+        method:'POST',
+        body:JSON.stringify(dic),
+        headers: { 'X-CSRFToken': csrfToken }
+
+    }).then(responce => responce.json())
+    .then(data=>{
+        alert("review comment added")
+        location.reload()
+    })
+}
+</script>
+
+
