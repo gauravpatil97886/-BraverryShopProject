@@ -1,6 +1,6 @@
 # Brewery Review System
 
-This project creates a web application using Django, HTML, CSS, Bootstrap, and Brewery APIs to search breweries by city and allow users to add reviews. The application also includes user authentication functionalities. The project is hosted and deployed on [GitHub](https://github.com/gauravpatil97886/BraverryShopProject) and [MY Site](https://gaurav97.pythonanywhere.com/).
+This project creates a web application using Django, HTML, CSS, Bootstrap, and Brewery APIs to search breweries by city and allow users to add reviews. The application also includes user authentication functionalities. The project is hosted and deployed ond [MY Site](https://gaurav97.pythonanywhere.com/).
 
 ## Features
 
