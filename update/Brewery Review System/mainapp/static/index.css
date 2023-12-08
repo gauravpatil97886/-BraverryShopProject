@@ -1,0 +1,252 @@
+
+.navbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #333;
+color: #fff;
+padding: 10px 20px;
+}
+
+/* Logo styles */
+/* Logo Animation */
+.logo {
+font-size: 24px;
+/* Adding a subtle animation */
+transition: color 0.3s ease-in-out;
+}
+
+.logo:hover {
+color: #ff6347; /* Change the color on hover */
+}
+
+/* Logout Button Animation */
+.logout-btn {
+padding: 8px 16px;
+border: none;
+border-radius: 5px;
+background-color: #3498db;
+color: #ffffff;
+text-decoration: none;
+transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+background-color: #2980b9; /* Darker background color on hover */
+animation: highlight 0.5s ease; /* Adding a highlight animation */
+}
+
+/* Keyframes for the highlight animation */
+@keyframes highlight {
+0% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.1);
+box-shadow: 0 0 10px #2980b9; /* Adding a shadow during animation */
+}
+100% {
+transform: scale(1);
+}
+}
+
+ body {
+      font-family: Arial, sans-serif;
+      background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+
+  }
+
+  .header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+  }
+
+  #heading {
+      text-align: center;
+  }
+
+  #getList {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin-bottom: 10px;
+      cursor: pointer;
+  }
+
+  .form {
+      text-align: center;
+      margin-top: 20px;
+  }
+
+  #span-filter,
+  #span-search {
+      display: block;
+      margin-bottom: 10px;
+  }
+
+  label {
+      font-weight: bold;
+  }
+
+  input[type="text"],
+  select {
+      width: 200px;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+  }
+
+  button[type="submit"] {
+      padding: 8px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+
+/* Footer styles */
+.card {
+/* display: grid;
+grid-template-columns:repeat((auto-fit,minmax(150px,1fr)));
+gap: 2rem; */
+margin: 3rem;
+padding: 0.8rem;
+width: 1000px;
+
+background-color: #85FFBD;
+background-image:linear-gradient(27deg, #ff6347 40%, white 43%);
+border-radius: 20px; 
+transition: all 0.8s cubic-bezier(0.15, 0.83, 0.66, 1);
+cursor: pointer;
+}
+
+.card:hover {
+transform: scale(1.05);
+box-shadow: 0px 10px 21px rgba(0, 0, 0, 0.3), 0px 39px 39px rgba(0, 0, 0, 0.25), 0px 87px 52px rgba(0, 0, 0, 0.2), 0px 155px 62px rgba(0, 0, 0, 0.15);
+}
+
+
+.body{
+margin-top: 3rem;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: space-evenly;
+width: 95%;
+height: auto;
+/* align-items: center;
+justify-items: center;  */
+background-image: linear-gradient(to top,  rgb(238, 249, 255),rgb(255 251 235));
+margin-bottom: 5rem;
+}
+
+.add-review-btn {
+font-family: 'Oswald', sans-serif;
+font-size: 1.4rem;
+text-transform: uppercase;
+text-decoration: none;
+overflow: hidden;
+display: inline-block;
+padding: 0 4rem 0 3.8rem;
+color: #FFF;
+background: navy;
+border: 3px solid #FFF;
+cursor: pointer;
+transform: translate3d(0, 0, 0);
+position: relative;
+border-radius: 10px;
+}
+
+
+
+.add-review-btn .text {
+line-height: 3.5rem;
+display: inline-block;
+height: 100%;
+padding-left: 1px;
+padding-right: 1px;
+transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+
+
+
+.user-info {
+display: flex;
+align-items: center;
+}
+
+.username {
+margin-left: 5px;
+font-weight: bold;
+color: #e8e8e8; /* Adjust text color as needed */
+}
+.result h4 {
+opacity: 0;
+color: #3498db; /* Set the text color to a shade of blue (you can change it) */
+animation: fadeIn 1s ease-out forwards infinite;
+font-size: x-large;
+}
+
+@keyframes fadeIn {
+0% {
+opacity: 0;
+}
+50% {
+opacity: 1;
+}
+100% {
+opacity: 0;
+}
+}
+
+.pagination-circle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .pagination-circle .page-link {
+      border-radius: 50%;
+  }
+
+  .copyright {
+      font-size: 1.2rem;
+      color: #888;
+      animation: rotateColor 5s infinite linear;
+  }
+
+  @keyframes rotateColor {
+      0% {
+          color: #888;
+      }
+      50% {
+          color: #555;
+      }
+      100% {
+          color: #888;
+      }
+  }
+
+.loading-spinner {
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+
+    /* CSS animation keyframes */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .result {
+      text-align: center;
+    }

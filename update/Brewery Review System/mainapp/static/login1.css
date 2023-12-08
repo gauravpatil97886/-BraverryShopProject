@@ -1,0 +1,86 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.container {
+text-align: center; /* Center the content within the container */
+padding: 150px; /* Add padding to the container */
+padding-left: 300px;
+font-size: xx-large;
+
+}
+
+
+
+.panel-default {
+    border-color: #d3e0e9;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.panel-heading {
+    background-color: #3498db;
+    color: #ffffff;
+    border-radius: 15px 15px 0 0;
+    padding: 20px;
+    font-size: 24px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.panel-body {
+    padding: 40px;
+}
+
+.bg-danger {
+    background-color: #e74c3c;
+    color: #ffffff;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    border-color: #3498db;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+.register-link {
+text-align: right;
+margin-top: 20px;
+font-size: 16px;
+color: #333; /* Text color */
+}
+
+.register-link a {
+text-decoration: none;
+color: #E52B50; /* Link color */
+font-weight: bold;
+transition: color 0.3s ease-in-out;
+}
+
+.register-link a:hover {
+color: #C2183B; /* Hover color */
+}
